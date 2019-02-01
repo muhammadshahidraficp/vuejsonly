@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+<div class="container" id="app">
+    <table class="table" border="1">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Count</th>
+                <th colspan="2">Action</th>
+            </tr>
+                <tr v-for="movie in movies">
+                    <td>{{movie.id}}</td>
+                    <td>{{movie.title}}</td>
+                    <td>{{movie.count}}</td>
+                    <td><button @click="editview=true">Edit Detail</button></td>
+                    <td><button @click="deleteuser()">Delete Detail</button></td>
+                </tr>
+    </table>
+    <table class="table" v-if="editview">
+        <tbody>   
+                <tr>
+                    <th>Title</th>
+                    <td><input type="text" v-model="clickeduser.title"></td>
+                </tr>
+                <tr>
+                    <th>Count</th>
+                    <td><input type="text" v-model="clickeduser.count"></td>
+                </tr>
+                <tr>
+                    <td><button @click="updateuser()">Edit Detail</button></td>
+
+                </tr>
+        </tbody>
+    </table>
+
+
+        <table class="table" v-if="!editview">
+        <tbody>   
+                <tr>
+                    <th>Title</th>
+                    <td><input type="text" v-model="newdata.title"></td>
+                </tr>
+                <tr>
+                    <th>Count</th>
+                    <td><input type="text" v-model="newdata.count"></td>
+                </tr>
+                <tr>
+                    <td><button @click="saveuser()">Add Detail</button></td>
+                    <td><button @click="Display()" v-if="status">Display Detail</button></td>
+                </tr>
+        </tbody>
+    </table>
+
+
+    </div>
+
+
+
+
+<script src="axios.js"></script>
+<script src="vue.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
