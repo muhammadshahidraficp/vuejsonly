@@ -18,8 +18,8 @@
                     <td>{{movie.id}}</td>
                     <td>{{movie.title}}</td>
                     <td>{{movie.count}}</td>
-                    <td><button @click="editview=true">Edit Detail</button></td>
-                    <td><button @click="deleteuser()">Delete Detail</button></td>
+                    <td><button @click="editview=true, selectuser(movie) ">Edit Detail</button></td>
+                    <td><button @click="selectuser(movie), deleteuser()">Delete Detail</button></td>
                 </tr>
     </table>
     <table class="table" v-if="editview">
@@ -33,8 +33,8 @@
                     <td><input type="text" v-model="clickeduser.count"></td>
                 </tr>
                 <tr>
-                    <td><button @click="updateuser()">Edit Detail</button></td>
-
+                    <td><button @click="updateUser()">Update</button></td>
+                    <td><button @click="editview=false, addview=true">Switch to Add</button></td>
                 </tr>
         </tbody>
     </table>

@@ -58,12 +58,13 @@ var app= new Vue({
 		selectuser: function(movie){
 			app.clickeduser=movie
 		},
-		deleteUser: function(){
-			var formData=app.toFormData(app.clickedUser)
-			axios.post("http://symfony4.local/index.php/movies",formData).then(function(response){
+		deleteuser: function(){
+			var formData=app.toFormData(app.clickeduser)
+			console.log(formData)
+			axios.post("http://symfony4.local/index.php/delete",formData).then(function(response){
 				//console.log("dtdtedrtertertetert");
 				console.log(response);
-				app.clickedUser={};
+				app.clickeduser={};
 				if(response.data.error){
 					app.errorMessage=response.data.message;
 				}
@@ -77,7 +78,7 @@ var app= new Vue({
 		updateUser: function(){
 			console.log(app.newdata)
 			var formData=app.toFormData(app.clickeduser)
-			axios.post("http://symfony4.local/index.php/movies/",formData).then(function(response){
+			axios.post("http://symfony4.local/index.php/update",formData).then(function(response){
 				//console.log("dtdtedrtertertetert");
 				console.log(response);
 				app.clickeduser={}
